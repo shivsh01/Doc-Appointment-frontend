@@ -6,8 +6,9 @@ import {
   bookAppointment,
   getMyAppointments,
   getDoctorAppointments,
+  updateAppointmentStatus,
 } from "@/src/services/appointment.service";
-import { BookAppointmentPayload, PaginationQuery } from "@/src/types/appointment.type";
+import { AppointmentStatus, BookAppointmentPayload, PaginationQuery } from "@/src/types/appointment.type";
 
 /* ---- Centralised query keys ---- */
 export const APPOINTMENT_KEYS = {
@@ -57,5 +58,17 @@ export function useDoctorAppointments(query: PaginationQuery = {}) {
     queryKey: APPOINTMENT_KEYS.doctorAppointments(query),
     queryFn: () =>
       getDoctorAppointments(query).then((res) => res.data.data),
+  });
+}
+
+export function useUpdateAppointmentStatus() {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, status }: { id: string; status: AppointmentStatus }) =>
+      updateAppointmentStatus(id, status),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["appointments"] });
+    },
   });
 }

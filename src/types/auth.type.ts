@@ -25,6 +25,11 @@ export interface LoginPayload {
     password: string;
 }
 
+export interface ChangePasswordPayload {
+    oldPassword: string;
+    newPassword: string;
+}
+
 export interface AuthData {
     token: string;
     user: User;

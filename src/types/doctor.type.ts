@@ -40,6 +40,33 @@ export interface CreateDoctorPayload {
   breaks?: DoctorBreak[];
 }
 
+/* ---- Update doctor payload ---- */
+export interface UpdateDoctorPayload {
+  specialization?: string;
+  experience?: number;
+  consultationFee?: number;
+  paymentRequired?: boolean;
+}
+
+export interface UpdateSchedulePayload {
+  startTime?: string;
+  endTime?: string;
+  slotDuration?: number;
+  maxBookingsPerDay?: number;
+  breaks?: DoctorBreak[];
+}
+
+export interface DoctorDashboardStats {
+  totalAppointments: number;
+  todayAppointments: number;
+  completedAppointments: number;
+  pendingAppointments: number;
+  totalRevenue: number;
+  totalPatients: number;
+}
+
 /* ---- API responses ---- */
 export type DoctorListResponse = ApiResponse<{ doctor: Doctor[] }>;
 export type DoctorResponse = ApiResponse<{ doctor: Doctor }>;
+export type DoctorPatientsResponse = ApiResponse<{ patients: any[] }>; // Ideally use User interface
+export type DoctorDashboardStatsResponse = ApiResponse<{ stats: DoctorDashboardStats }>;

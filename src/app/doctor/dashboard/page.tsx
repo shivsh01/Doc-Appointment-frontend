@@ -4,7 +4,7 @@ import { Card } from "@/src/components/ui/Card";
 import { Button } from "@/src/components/ui/Button";
 import { Spinner } from "@/src/components/ui/Spinner";
 import { AppointmentList } from "@/src/components/shared/AppointmentList";
-import { useMyDoctorProfile } from "@/src/hooks/useDoctor";
+import { useMyDoctorProfile, useDoctorDashboardStats } from "@/src/hooks/useDoctor";
 import { useDoctorAppointments } from "@/src/hooks/useAppointment";
 import { useRouter } from "next/navigation";
 import dashStyles from "@/src/app/patient/dashboard/Dashboard.module.css";
@@ -13,6 +13,7 @@ import pageStyles from "@/src/components/shared/PageStyles.module.css";
 export default function DoctorDashboard() {
   const router = useRouter();
   const { data: profile, isLoading: profileLoading, error: profileError } = useMyDoctorProfile();
+  const { data: statsData, isLoading: statsLoading } = useDoctorDashboardStats();
   const { data: appointmentData, isLoading: appointmentsLoading } = useDoctorAppointments({ limit: 5 });
 
   if (profileLoading) {
@@ -45,26 +46,24 @@ export default function DoctorDashboard() {
   }
 
   const appointments = appointmentData?.appointments ?? [];
-  const bookedCount = appointments.filter((a) => a.status === "booked").length;
-  const completedCount = appointments.filter((a) => a.status === "completed").length;
 
   const STATS = [
     {
-      label: "Upcoming",
-      value: appointmentsLoading ? "…" : String(bookedCount),
+      label: "Appointments",
+      value: statsLoading ? "…" : String(statsData?.totalAppointments || 0),
       icon: "📅",
       variant: "statIconPrimary" as const,
     },
     {
-      label: "Completed",
-      value: appointmentsLoading ? "…" : String(completedCount),
-      icon: "✅",
+      label: "Revenue",
+      value: statsLoading ? "…" : `₹${statsData?.totalRevenue || 0}`,
+      icon: "💰",
       variant: "statIconSuccess" as const,
     },
     {
-      label: "Fee",
-      value: `₹${profile.consultationFee}`,
-      icon: "💰",
+      label: "Patients",
+      value: statsLoading ? "…" : String(statsData?.totalPatients || 0),
+      icon: "🧑‍🤝‍🧑",
       variant: "statIconWarning" as const,
     },
     {

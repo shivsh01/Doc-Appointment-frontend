@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuthStore } from "@/src/store/auth.store";
@@ -21,18 +21,25 @@ export function DashboardLayout({ children, navItems }: DashboardLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout } = useAuthStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLogout = () => {
     logout();
     router.push("/login");
   };
 
-  const initials = user?.name
-    ?.split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2) || "?";
+  const initials = mounted && user?.name
+    ? user.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "?";
 
   return (
     <div className={styles.layout}>
@@ -79,7 +86,7 @@ export function DashboardLayout({ children, navItems }: DashboardLayoutProps) {
       <main className={styles.main}>
         <div className={styles.topBar}>
           <div className={styles.greeting}>
-            <h1>Hi, {user?.name || "User"} 👋</h1>
+            <h1>Hi, {mounted ? (user?.name || "User") : "User"} 👋</h1>
             <p>Here&apos;s what&apos;s happening today</p>
           </div>
           <div className={styles.avatar}>{initials}</div>

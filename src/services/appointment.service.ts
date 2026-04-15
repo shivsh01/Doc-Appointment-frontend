@@ -4,7 +4,10 @@ import {
     BookedAppointmentResponse,
     PaginationQuery,
     SlotsResponse,
+    Appointment,
+    AppointmentStatus
 } from "../types/appointment.type";
+import { ApiResponse } from "../types/api.type";
 import { api } from "./api";
 
 /** GET /appointments/slots?doctorId=X&date=YYYY-MM-DD — get available slots */
@@ -31,4 +34,9 @@ export const getDoctorAppointments = (query: PaginationQuery = {}) => {
     return api.get<AppointmentsListResponse>("/appointments/doctor-appointments", {
         params: query,
     });
+};
+
+/** PATCH /appointments/:id/status — update appointment status */
+export const updateAppointmentStatus = (id: string, status: AppointmentStatus) => {
+    return api.patch<ApiResponse<Appointment>>(`/appointments/${id}/status`, { status });
 };

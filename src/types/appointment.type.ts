@@ -7,8 +7,8 @@ export type PaymentStatus = "pending" | "paid";
 /* ---- Appointment model ---- */
 export interface Appointment {
   _id: string;
-  doctorId: string;
-  patientId: string;
+  doctorId: any;
+  patientId: any;
   date: string;
   time: string;
   status: AppointmentStatus;

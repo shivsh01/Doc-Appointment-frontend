@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { loginService, registerService } from "@/src/services/auth.service";
 import { useAuthStore } from "@/src/store/auth.store";
 import { Role } from "@/src/types/auth.type";
@@ -29,17 +30,13 @@ export function useLogin() {
 }
 
 export function useRegister() {
-  const { setAuth } = useAuthStore();
   const router = useRouter();
 
   return useMutation({
     mutationFn: registerService,
-    onSuccess: (response) => {
-      const { user, token } = response?.data?.data || {};
-      if (user && token) {
-        setAuth(user, token);
-        router.push(ROLE_REDIRECT[user.role] || "/");
-      }
+    onSuccess: () => {
+      toast.success("register successfully");
+      router.push("/login");
     },
   });
 }

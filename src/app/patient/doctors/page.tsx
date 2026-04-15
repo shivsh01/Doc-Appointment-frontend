@@ -32,7 +32,7 @@ export default function FindDoctorsPage() {
   const handleBook = () => {
     if (!selectedDoctor || !selectedDate || !selectedSlot) return;
     book({
-      doctorId: selectedDoctor?.userId?._id || "",
+      doctorId: selectedDoctor._id || "",
       date: selectedDate,
       time: selectedSlot,
     });
