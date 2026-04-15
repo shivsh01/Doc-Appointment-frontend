@@ -1,0 +1,84 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.button:active:not(:disabled) { transform: scale(0.98); }
+.button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Variants */
+.primary {
+  background: var(--gradient-primary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+}
+.primary:hover:not(:disabled) {
+  box-shadow: var(--shadow-glow);
+  filter: brightness(1.05);
+}
+
+.secondary {
+  background: var(--color-neutral-100);
+  color: var(--color-text);
+  box-shadow: var(--shadow-xs);
+  border-radius: var(--radius-lg);
+}
+.secondary:hover:not(:disabled) { background: var(--color-neutral-200); }
+
+.outline {
+  background: transparent;
+  color: var(--color-primary-600);
+  border: 1.5px solid var(--color-primary-500);
+  border-radius: var(--radius-lg);
+}
+.outline:hover:not(:disabled) { background: var(--color-primary-50); }
+
+.ghost {
+  background: transparent;
+  color: var(--color-primary-600);
+  border-radius: var(--radius-lg);
+}
+.ghost:hover:not(:disabled) { background: var(--color-primary-50); }
+
+.danger {
+  background: var(--color-error);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-lg);
+}
+.danger:hover:not(:disabled) { filter: brightness(1.1); }
+
+/* Sizes */
+.sm { padding: var(--space-xs) var(--space-md); font-size: var(--font-size-sm); }
+.md { padding: var(--space-sm) var(--space-lg); font-size: var(--font-size-base); }
+.lg { padding: 0.75rem var(--space-xl); font-size: var(--font-size-lg); }
+
+/* Modifiers */
+.fullWidth { width: 100%; }
+
+.loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.spinnerWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

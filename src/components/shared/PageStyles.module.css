@@ -1,0 +1,237 @@
+/* Shared page styles — used across patient & doctor sub-pages */
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.pageTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ---- Doctor card grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.doctorCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.doctorHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.doctorAvatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.doctorName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.doctorSpecialty {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-600);
+  margin: 0;
+}
+
+.doctorMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* ---- Slot picker ---- */
+.slotSection {
+  margin-top: var(--space-lg);
+}
+
+.dateInput {
+  padding: var(--space-sm) var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  outline: none;
+  transition: border-color var(--transition-fast);
+  margin-bottom: var(--space-md);
+}
+
+.dateInput:focus {
+  border-color: var(--color-border-focus);
+}
+
+.slotsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.slotChip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.slotChip:hover {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+}
+
+.slotChipSelected {
+  background: var(--color-primary-600);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary-600);
+}
+
+.slotChipSelected:hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+/* ---- Empty / loading states ---- */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-3xl);
+  color: var(--color-text-muted);
+}
+
+.emptyStateIcon {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-md);
+}
+
+.emptyStateText {
+  font-size: var(--font-size-base);
+}
+
+/* ---- Appointment list ---- */
+.appointmentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.appointmentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--transition-fast);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.appointmentRow:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.appointmentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.appointmentDoctor {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.appointmentMeta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.badge {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.badgeBooked   { background: var(--color-primary-100); color: var(--color-primary-700); }
+.badgeCompleted { background: var(--color-success-light); color: var(--color-success); }
+.badgeCancelled { background: var(--color-error-light); color: var(--color-error); }
+.badgePending  { background: var(--color-warning-light); color: var(--color-warning); }
+
+/* ---- Success message ---- */
+.successBanner {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  animation: fadeIn 0.3s ease both;
+}
+
+.errorBanner {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-error-light);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  animation: fadeIn 0.3s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

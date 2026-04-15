@@ -1,0 +1,162 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Left hero panel ---------- */
+.heroPanel {
+  display: none;
+  position: relative;
+  flex: 1;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: var(--space-3xl);
+  color: var(--color-text-inverse);
+  animation: fadeInUp 0.8s ease both;
+}
+
+.heroLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-3xl);
+}
+
+.heroLogoIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xl);
+}
+
+.heroLogoText {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.025em;
+}
+
+.heroTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-lg);
+  max-width: 420px;
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-lg);
+  opacity: 0.8;
+  line-height: var(--line-height-relaxed);
+  max-width: 400px;
+}
+
+/* Floating decorative shapes */
+.heroDeco1, .heroDeco2, .heroDeco3 {
+  position: absolute;
+  border-radius: var(--radius-full);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.heroDeco1 {
+  width: 420px; height: 420px;
+  background: var(--color-primary-300);
+  top: -120px; right: -80px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.heroDeco2 {
+  width: 280px; height: 280px;
+  background: var(--color-accent-400);
+  bottom: 60px; left: -60px;
+  animation: float 10s ease-in-out infinite 1s;
+}
+
+.heroDeco3 {
+  width: 160px; height: 160px;
+  background: var(--color-primary-200);
+  top: 40%; right: 20%;
+  animation: float 7s ease-in-out infinite 2s;
+}
+
+/* Feature list */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  list-style: none;
+  padding: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-base);
+  opacity: 0.85;
+}
+
+.featureIcon {
+  width: 1.5rem; height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  flex-shrink: 0;
+}
+
+/* ---------- Right form panel ---------- */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  background: var(--color-bg);
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 420px;
+  animation: fadeIn 0.5s ease both;
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 768px) {
+  .heroPanel { display: flex; }
+}
+
+@media (min-width: 1024px) {
+  .heroPanel { flex: 1.15; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}

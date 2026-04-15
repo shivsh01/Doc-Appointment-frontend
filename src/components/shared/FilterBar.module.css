@@ -1,0 +1,75 @@
+/* Filter toolbar styles — shared by appointment filter bars */
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.filterChip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-card);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterChip:hover {
+  border-color: var(--color-primary-500);
+  color: var(--color-text);
+}
+
+.filterChipActive {
+  background: var(--color-primary-600);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary-600);
+}
+
+.filterChipActive:hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.filterDateInput {
+  padding: var(--space-xs) var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.filterDateInput:focus {
+  border-color: var(--color-border-focus);
+}
+
+.filterClearBtn {
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.filterClearBtn:hover {
+  color: var(--color-error);
+}
+
+/* ---- Pagination ---- */
+.paginationBar {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}

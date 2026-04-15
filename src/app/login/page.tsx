@@ -1,9 +1,13 @@
-import LoginForm  from "@/src/components/Login"
+import { AuthLayout } from "@/src/components/auth/AuthLayout";
+import { LoginForm } from "@/src/components/auth/LoginForm";
 
-const page = () => {
+export default function LoginPage() {
   return (
-    <LoginForm />
-  )
+    <AuthLayout
+      title="Manage your health appointments effortlessly."
+      subtitle="Your gateway to personalized healthcare. Book, track, and stay connected with your doctors."
+    >
+      <LoginForm />
+    </AuthLayout>
+  );
 }
-
-export default page

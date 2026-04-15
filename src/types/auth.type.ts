@@ -1,6 +1,9 @@
+import { ApiResponse } from "./api.type";
+
+/* Roles match backend zod schema: lowercase "doctor" | "patient" */
 export enum Role {
-    DOCTOR = "DOCTOR",
-    PATIENT = "PATIENT",
+    DOCTOR = "doctor",
+    PATIENT = "patient",
 }
 
 export interface User {
@@ -21,13 +24,10 @@ export interface LoginPayload {
     email: string;
     password: string;
 }
+
 export interface AuthData {
     token: string;
     user: User;
 }
 
-export interface AuthResponse {
-    success: boolean;
-    message: string;
-    data: AuthData;
-}
+export type AuthResponse = ApiResponse<AuthData>;
