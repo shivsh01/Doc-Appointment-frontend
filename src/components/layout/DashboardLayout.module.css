@@ -114,6 +114,44 @@
   margin-bottom: var(--space-2xl);
 }
 
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.hamburgerBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.closeSidebarBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: calc(var(--z-sidebar) - 1);
+}
+
 .greeting h1 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
@@ -153,5 +191,25 @@
   .main {
     margin-left: 0;
     padding: var(--space-lg);
+  }
+
+  .sidebarLogo {
+    margin-bottom: var(--space-xl);
+  }
+
+  .hamburgerBtn {
+    display: block;
+  }
+
+  .closeSidebarBtn {
+    display: block;
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .greeting h1 {
+    font-size: var(--font-size-xl);
   }
 }
